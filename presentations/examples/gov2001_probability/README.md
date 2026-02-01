@@ -88,7 +88,7 @@ Or extract into a separate `.sty` file for reuse across multiple decks.
 
 ## Context
 
-This deck was generated using the prompt from `presentations/deck_generation_prompt.md` with the following customization:
+This deck was generated using the prompt from `../deck_generation_prompt.md` with the following customization:
 
 ```
 ...professional for a PhD-level course on quantitative methods.

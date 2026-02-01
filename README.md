@@ -1,70 +1,90 @@
 # MixtapeTools
 
-Practical tools for quantitative empirical research with AI coding assistants (Claude Code, Cursor, etc.).
-
-By [Scott Cunningham](https://github.com/scunning1975), author of [Causal Inference: The Mixtape](https://mixtape.scunning.com/).
+> Tools for coding, teaching, and presentations with AI assistance.
 
 ---
 
-## Philosophy
+## About This Repo
 
-These tools emerged from real research projects - months of scraping, data cleaning, estimation, and paper writing with Claude Code. They address problems I kept running into:
+This is a collection of tools, templates, and philosophies I've developed while using Claude Code for:
 
-1. **AI makes confident mistakes** - especially in code with subtle bugs (race conditions, off-by-one errors, file handling)
-2. **Context gets lost** - AI forgets project decisions across sessions
-3. **No one reviews AI work** - unlike human code, AI output often goes straight to production
-4. **Tacit knowledge is hard to transfer** - I know what makes a good research presentation, but articulating it is hard
+- **Coding** (data analysis scripts, replication code, automation)
+- **Teaching** (course materials, lecture decks, pedagogical tools)
+- **Presentations** (Beamer decks, slides for talks and seminars)
 
-## What's Included
+As I develop new approaches, I'll add them here. Anyone is free to use them.
 
-### `/claude`
-
-**`CLAUDE.md`** - Template for research project context. Keeps AI grounded in your project's specifics: data sources, identification strategy, collaborators, decisions made.
-
-**`referee2.md`** - Adversarial reviewer agent. Spawns a separate, skeptical AI to review code/analysis and produce a formal referee report. Forces you to fix issues or justify your choices. Like an R&R process before you submit.
-
-### `/presentations`
-
-**`rhetoric_of_decks.md`** - Principles for structuring research presentations. Based on the tacit knowledge embedded in thousands of good (and bad) academic talks.
-
-### `/examples`
-
-Sanitized examples from real projects showing these tools in action.
+**Take everything with a grain of salt.** These are workflows that work for me. Your mileage may vary.
 
 ---
 
-## Installation
+## Who I Am
 
-### Understanding the Two Locations
+**Scott Cunningham** — Professor of Economics at Baylor University
 
-Claude Code uses two locations for configuration:
+- **Website:** [www.scunning.com](https://www.scunning.com)
+- **Substack:** [causalinf.substack.com](https://causalinf.substack.com) — I write regularly about causal inference, Claude Code, and random things
+- **Free book:** [Causal Inference: The Mixtape](https://mixtape.scunning.com) — available online
 
-1. **`~/.claude/`** - Global folder. Things here apply to ALL projects.
-2. **`<project>/CLAUDE.md`** - Project-specific. Changes per project.
+---
 
-**What goes where:**
-- `CLAUDE.md` → Copy to each project root (project-specific context)
-- `referee2.md` → Can go in `~/.claude/` for global access, or use per-project
-- Presentation tools → Reference as needed
+## What I Recommend
 
-### Quick Setup
+If you're new here, start with:
 
-**Option A: Per-Project (Simple)**
-```bash
-# In your project directory
-curl -O https://raw.githubusercontent.com/scunning1975/MixtapeTools/main/claude/CLAUDE.md
-# Edit CLAUDE.md with your project specifics
+### 1. Referee 2 (Adversarial Review)
+
+**Location:** `personas/referee2.md`
+
+The single most valuable practice I've developed. After you finish code or analysis with Claude, open a *separate* Claude conversation, paste the referee2 persona, and have it tear your work apart. You cannot grade your own homework.
+
+### 2. The Rhetoric of Decks
+
+**Location:** `presentations/`
+
+My philosophy of slide design, plus a tested prompt for generating Beamer presentations. The key insight: aim for MB/MC equivalence across slides (smoothness), not maximum density.
+
+---
+
+## Repository Structure
+
+```
+MixtapeTools/
+├── README.md                 # You are here
+├── claude/                   # Templates for working with Claude
+│   ├── CLAUDE.md            # Project context template (copy to your projects)
+│   └── README.md
+├── personas/                 # Adversarial reviewers and critics
+│   ├── referee2.md          # The adversarial code/analysis reviewer
+│   └── README.md
+└── presentations/            # Everything about slide decks
+    ├── rhetoric_of_decks.md           # Practical principles (condensed)
+    ├── rhetoric_of_decks_full_essay.md # Full intellectual framework (600+ lines)
+    ├── deck_generation_prompt.md      # The prompt + iterative workflow
+    ├── README.md
+    └── examples/
+        └── gov2001_probability/       # A real lecture deck
 ```
 
-**Option B: Global + Project (Recommended)**
-```bash
-# One-time: Clone for reference
-git clone https://github.com/scunning1975/MixtapeTools.git ~/MixtapeTools
+---
 
-# Per project: Copy CLAUDE.md template
-cp ~/MixtapeTools/claude/CLAUDE.md ./CLAUDE.md
-# Edit with your project specifics
-```
+## The Philosophy
+
+### Design Before Results
+
+During estimation and analysis, focus entirely on whether the specification is correct. Results are meaningless until the "experiment" is designed on purpose. Don't get excited or worried about point estimates until the design is intentional.
+
+### Trust But Verify (Heavily on Verify)
+
+AI makes confident mistakes. Cross-software validation (R = Stata = Python) catches bugs that single-language analysis misses. If results aren't identical to 6+ decimal places across implementations, something is wrong.
+
+### Adversarial Review Requires Separation
+
+If you ask the same Claude that wrote code to review it, you're asking a student to grade their own exam. True adversarial review requires a separate conversation with fresh context and no prior commitments.
+
+### Documentation Is First-Class Output
+
+If it's not documented, it didn't happen. Future you (or your collaborators) need to reconstruct what happened. Every significant analysis produces artifacts: summaries, session logs, README files.
 
 ---
 
@@ -73,8 +93,8 @@ cp ~/MixtapeTools/claude/CLAUDE.md ./CLAUDE.md
 ### Using Referee 2
 
 1. Complete some code or analysis with Claude
-2. Open a **new conversation** (true separation)
-3. Paste the contents of `referee2.md` as system context
+2. Open a **new conversation** (true separation is essential)
+3. Paste the contents of `personas/referee2.md` as the opening message
 4. Paste your code/analysis and ask for a referee report
 5. Take the report back to your original Claude conversation
 6. Address each concern or justify not addressing it
@@ -84,42 +104,33 @@ cp ~/MixtapeTools/claude/CLAUDE.md ./CLAUDE.md
 
 ### Using CLAUDE.md
 
-1. Copy the template to your project root
+1. Copy `claude/CLAUDE.md` to your project root
 2. Fill in your project specifics
 3. Claude Code will automatically read it and maintain context
 4. Update it when you make important decisions ("we dropped X because Y")
 
 ---
 
-## The "Design Before Results" Principle
-
-One core philosophy from my research workflow:
-
-> **Do NOT express concern or excitement about point estimates until the design is intentional.**
-
-When estimating causal effects, it's easy to get attached to results - tweaking specifications until you get the "right" answer. This is backwards.
-
-The correct workflow:
-1. Design the empirical strategy based on identification arguments
-2. Commit to the specification before seeing results
-3. Only then interpret the estimates
-
-These tools help enforce that discipline by keeping AI focused on *whether the design is correct*, not on *whether we like the numbers*.
-
----
-
 ## Contributing
 
-These tools are opinionated and reflect my workflow. If you have improvements or alternative approaches for empirical research, PRs welcome.
+Have improvements or additions? PRs welcome. I'm particularly interested in:
 
----
-
-## License
-
-MIT
+- New personas (security reviewer, performance critic, etc.)
+- Additional examples showing workflows in practice
+- Tools for other aspects of coding and teaching
 
 ---
 
 ## Acknowledgments
 
-Inspired by [Boris Cherny's ChernyCode](https://github.com/meleantonio/ChernyCode) template for AI coding best practices. Extended for quantitative empirical research workflows.
+Inspired by [Boris Cherny's ChernyCode](https://github.com/meleantonio/ChernyCode) template for AI coding best practices.
+
+---
+
+## License
+
+Use freely. Attribution appreciated but not required.
+
+---
+
+*Last updated: February 2026*

@@ -6,9 +6,9 @@
 
 ## Contents
 
-### `rhetoric_of_decks.md` — The Philosophy
+### `rhetoric_of_decks.md` — Practical Principles (Condensed)
 
-**What it is:** A comprehensive framework for what makes presentations work. The tacit knowledge behind thousands of good (and bad) academic talks, made explicit.
+**What it is:** A condensed guide to what makes presentations work. The actionable principles extracted from years of giving and watching academic talks.
 
 **How to use it:**
 - **Read it** to internalize the principles
@@ -22,7 +22,22 @@
 - **Titles are assertions**: "Treatment increased distance by 61 miles" not "Results"
 - **Bullets are defeat**: Find the structure hiding in your list
 
-**When to use it:** Before creating any significant presentation. The principles apply whether you're using Claude or not.
+---
+
+### `rhetoric_of_decks_full_essay.md` — The Full Intellectual Framework
+
+**What it is:** A 600+ line essay tracing rhetoric from Aristotle through LLMs. The complete intellectual foundation behind the practical principles.
+
+**Covers:**
+- The history of rhetoric (Aristotle, Cicero, Quintilian, Augustine)
+- Technology's transformation of persuasion (printing press through PowerPoint)
+- The economics of attention (Netflix streaming vs. theater viewing)
+- Defamiliarization (Shklovsky's "making the stones feel like stones")
+- The academic job market talk as case study
+- What LLMs see when trained on presentations
+- Tufte's critique and its limits
+
+**When to use it:** When you want to understand *why* the principles work, not just *what* they are.
 
 ---
 
@@ -103,9 +118,10 @@ Things that compile fine but look wrong:
 
 ---
 
-## Example
+## Examples
 
-See `/examples/gov2001_probability/` for a complete worked example showing:
-- A full probability lecture deck
+See `examples/gov2001_probability/` for a complete worked example showing:
+- A full probability lecture deck (Harvard Gov 2001)
 - Custom Beamer theme (inline in preamble)
 - The rhetoric principles in practice
+- What the iterative workflow caught

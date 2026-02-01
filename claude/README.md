@@ -1,6 +1,6 @@
 # Claude Tools
 
-> **What's in this folder:** Templates and personas for working with Claude Code on research projects.
+> **What's in this folder:** Templates for giving Claude Code persistent memory across sessions.
 
 ---
 
@@ -8,7 +8,7 @@
 
 ### `CLAUDE.md` — Project Context Template
 
-**What it is:** A template you copy into each project to give Claude persistent memory.
+**What it is:** A template you copy into each research project to give Claude persistent memory.
 
 **How to use it:**
 ```bash
@@ -16,7 +16,7 @@
 cp CLAUDE.md /path/to/your/project/
 
 # Edit with your project specifics
-# Claude will automatically read it every session
+# Claude Code will automatically read it every session
 ```
 
 **What goes in it:**
@@ -30,41 +30,17 @@ cp CLAUDE.md /path/to/your/project/
 
 ---
 
-### `referee2.md` — Adversarial Reviewer
+## Philosophy
 
-**What it is:** A persona/process document for conducting adversarial code review.
+This template exists because:
 
-**How to use it:**
-1. Finish some code or analysis in your main Claude session
-2. **Open a new, separate Claude conversation**
-3. Paste the contents of `referee2.md` at the start
-4. Paste your code/analysis
-5. Ask for a referee report
-6. Take the report back to your original session
-7. Address concerns or justify not addressing them
-8. Repeat until Referee 2 accepts
-
-**Why a separate conversation?** The whole point is adversarial review. If you ask the same Claude that wrote the code to review it, you're grading your own homework. True separation catches real bugs.
-
-**What Referee 2 checks:**
-- Race conditions, edge cases, off-by-one errors
-- File I/O issues, encoding problems
-- Statistical assumptions, identification concerns
-- Logic gaps, unstated assumptions
-
-**Output format:** A formal referee report with:
-- Major concerns (must address)
-- Minor concerns (should address)
-- Questions for authors
-- Verdict: Accept / Minor revisions / Major revisions / Reject
+1. **Context gets lost** — without `CLAUDE.md`, every session starts fresh
+2. **Decisions need documentation** — "we dropped X because Y" prevents circular discussions
+3. **Collaborator names matter** — Claude should address Scott as Scott, not "the user"
+4. **"Design before results"** — keep Claude focused on whether the design is correct, not whether we like the numbers
 
 ---
 
-## Philosophy
+## Related Tools
 
-These tools exist because:
-
-1. **AI makes confident mistakes** — especially subtle bugs that compile fine but fail silently
-2. **Context gets lost** — without `CLAUDE.md`, every session starts fresh
-3. **No one reviews AI work** — Referee 2 forces adversarial review before deployment
-4. **"Design before results"** — keep Claude focused on whether the design is correct, not whether we like the numbers
+Looking for adversarial review? See `personas/referee2.md` — that's a separate persona for code review, not a Claude configuration template.
