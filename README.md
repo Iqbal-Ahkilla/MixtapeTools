@@ -90,7 +90,8 @@ MixtapeTools/
     ├── deck_generation_prompt.md      # The prompt + iterative workflow
     ├── README.md
     └── examples/
-        └── gov2001_probability/       # A real lecture deck
+        ├── rhetoric_of_decks/         # The philosophy deck (45 slides)
+        └── gov2001_probability/       # A lecture deck
 ```
 
 ---

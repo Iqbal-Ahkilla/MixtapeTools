@@ -102,26 +102,63 @@
 
 ## The Silent Killers
 
-Things that compile fine but look wrong:
+LaTeX compilation succeeds with two types of output: **warnings** and **errors**. Errors stop compilation; warnings don't. But warnings matter enormously for visual quality.
 
-**Tikz:**
-- Labels not where you think they are
-- Coordinate systems misaligned
+### LaTeX Warnings You Must Fix
+
+**Overfull `\hbox`**: Content is too wide for its container. LaTeX pushes text into the margin. You'll see a black box in draft mode or text bleeding off the slide.
+
+**Underfull `\hbox`**: Content is too sparse. LaTeX stretches whitespace awkwardly to fill the line, creating uneven spacing.
+
+**Overfull/Underfull `\vbox`**: Same problems but vertical—content either overflows the page bottom or leaves awkward vertical gaps.
+
+**Why these matter:** They indicate your layout doesn't fit. The visual artifact may be subtle (slightly uneven spacing) or obvious (text clipped at margins), but it always looks unprofessional.
+
+### Visual Errors That Don't Warn
+
+LaTeX warnings catch box overflow issues but **NOT** coordinate or positioning problems in TikZ, ggplot2, or matplotlib. These compile silently but look wrong:
+
+**TikZ:**
+- Labels not where you think they are (coordinates miscalculated)
+- Timeline endpoints misaligned with content
+- Arrows pointing to wrong nodes
 - Shape constraints forcing misplacement
 
 **ggplot2 / matplotlib:**
-- Axis labels cut off
-- Legends obscuring data
-- Text sizing inconsistent
+- Axis labels cut off at figure boundary
+- Legends obscuring data points
+- Text sizing inconsistent across panels
+- Tick marks misaligned with gridlines
 
-**How to catch them:** Explicitly verify coordinates. Ask Claude to check label positions against intended positions.
+**Why warnings don't catch these:** LaTeX doesn't know what you *intended*. If you specify `\node at (5,3)` but meant `(3,5)`, the code is syntactically valid—it just draws the wrong picture.
+
+### The Two-Pass Workflow
+
+1. **Compile and fix all warnings** — No overfull/underfull boxes allowed
+2. **Visually inspect TikZ/figures** — Claude cannot verify coordinates from code alone; either look at the PDF or have Claude read the PDF and describe what it sees
+3. **Recompile after fixes** — New warnings may emerge
+
+The goal is zero warnings AND visual correctness. LaTeX warnings are necessary but not sufficient.
 
 ---
 
 ## Examples
 
-See `examples/gov2001_probability/` for a complete worked example showing:
-- A full probability lecture deck (Harvard Gov 2001)
+### `examples/rhetoric_of_decks/` — The Philosophy Deck
+
+A 45-slide Beamer presentation that teaches the rhetoric of decks philosophy itself. This deck practices what it preaches:
+- Custom professional color palette (DeepNavy, Teal, WarmOrange)
+- TikZ diagrams throughout
+- MB/MC equivalence across slides
+- Titles as assertions
+- Zero compilation warnings
+
+Contains: LaTeX source, compiled PDF, figure generation R script, all figure PDFs.
+
+### `examples/gov2001_probability/` — A Lecture Deck
+
+A complete probability lecture deck (Harvard Gov 2001) showing:
+- A full probability lecture deck
 - Custom Beamer theme (inline in preamble)
 - The rhetoric principles in practice
 - What the iterative workflow caught
