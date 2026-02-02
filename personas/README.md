@@ -192,10 +192,4 @@ The personas in this folder exist because:
 
 ## Future Personas
 
-Consider creating additional audit protocols for:
-
-- **The Statistician** — Deep dive on inference, multiple testing, power
-- **The Security Reviewer** — Data privacy, credential exposure, attack vectors
-- **The Pedagogy Reviewer** — For teaching materials: clarity, accuracy, accessibility
-
-Each should follow the health inspector model: specific checklists, replication tasks, formal reports, revise & resubmit process.
+As I begin to formalize more of my workflow into personas that perform distinct tasks, I will upload them here. For now, Referee 2 is the main one — it's the protocol I use most frequently and have refined the most.
