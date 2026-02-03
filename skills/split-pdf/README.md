@@ -89,9 +89,56 @@ articles/
 
 ---
 
-## Examples
+## Example: Gentzkow, Shapiro & Sinkinson (AER 2014)
 
-This directory may contain example outputs from running the skill — split PDFs and the notes they produce. These show what the skill's output looks like in practice.
+This directory contains a complete worked example showing the full pipeline from start to finish.
+
+### What happened
+
+The user typed:
+
+```
+/split-pdf "Gentzkow Shapiro Sinkinson competition ideological diversity newspapers"
+```
+
+Claude searched the web, found the paper on Matt Gentzkow's website at `https://web.stanford.edu/~gentzkow/research/competition.pdf`, downloaded it to a local `articles/` directory, and then split and read it. The original PDF was **kept** — only the splits were created alongside it.
+
+### What's in this directory
+
+```
+gentskow_shapiro_competition/
+├── gs_competition_pp1-4.pdf       # pages 1–4 (intro, motivation, preview)
+├── gs_competition_pp5-8.pdf       # pages 5–8 (data, descriptive analysis)
+├── gs_competition_pp9-12.pdf      # pages 9–12 (descriptive results, model setup)
+├── gs_competition_pp13-16.pdf     # pages 13–16 (model continued, identification)
+├── gs_competition_pp17-20.pdf     # pages 17–20 (model structure, assumptions)
+├── gs_competition_pp21-24.pdf     # pages 21–24 (estimation, demand side)
+├── gs_competition_pp25-28.pdf     # pages 25–28 (supply estimation, parameter estimates)
+├── gs_competition_pp29-32.pdf     # pages 29–32 (model fit, welfare analysis)
+├── gs_competition_pp33-36.pdf     # pages 33–36 (policy experiments, robustness)
+├── gs_competition_pp37-40.pdf     # pages 37–40 (appendix, references)
+├── gs_competition_pp41-42.pdf     # pages 41–42 (remaining references)
+└── notes.md                       # structured reading notes (all 8 dimensions)
+```
+
+The original PDF would sit one level up in `articles/` — it is not included here to keep the repo size reasonable, but in actual use it is always preserved.
+
+### The reading process
+
+The 42-page paper was split into 11 chunks (ten 4-page chunks + one 2-page chunk). Claude read them in 4 rounds:
+
+| Round | Splits read | Pages | What was covered |
+|-------|-------------|-------|------------------|
+| 1 | pp1-4, pp5-8, pp9-12 | 1–12 | Introduction, data, descriptive results |
+| 2 | pp13-16, pp17-20, pp21-24 | 13–24 | Structural model, identification, estimation |
+| 3 | pp25-28, pp29-32, pp33-36 | 25–36 | Parameter estimates, welfare, policy experiments |
+| 4 | pp37-40, pp41-42 | 37–42 | Appendix robustness, references |
+
+After each round, Claude paused and asked whether to continue. The `notes.md` file was updated incrementally after each batch.
+
+### What the notes look like
+
+Open [`notes.md`](gentskow_shapiro_competition/notes.md) to see the full output. It is not a summary — it is a structured extraction across all 8 dimensions, including specific coefficient estimates (e.g., β̄ = 0.81 vs. β̲ = −0.29), standard errors, equation numbers, exact data sources with where they were obtained, sample sizes, and a detailed assessment of replication feasibility. The notes run to ~320 lines because the paper is methodologically dense. A simpler empirical paper would produce shorter notes.
 
 ---
 
