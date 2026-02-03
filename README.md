@@ -81,7 +81,22 @@ My philosophy of slide design, plus a tested prompt for generating Beamer presen
 - One idea per slide
 - Bullets are defeat—find the structure hiding in your list
 
-### 3. CLAUDE.md Template
+### 3. Split-PDF Skill (Download, Split, and Deep-Read Papers)
+
+**Location:** [`skills/`](skills/) (human-readable guide) | `.claude/skills/split-pdf/SKILL.md` (actual skill)
+
+A Claude Code **skill** — an invocable `/split-pdf` command that automates the full pipeline for reading academic papers:
+
+1. **Download** the PDF (web search + download, or use a local file)
+2. **Split** into 4-page chunks via PyPDF2
+3. **Read** 3 chunks at a time (~12 pages), pausing between batches
+4. **Write** structured reading notes with detailed extraction
+
+**Why not just read the full PDF?** Long PDFs either crash the session ("prompt too long" — unrecoverable) or produce shallow, hallucinated output. Splitting forces Claude to attend carefully to every section and externalizes understanding into markdown notes incrementally.
+
+**Usage:** Type `/split-pdf path/to/paper.pdf` or `/split-pdf "search query for paper"`
+
+### 4. CLAUDE.md Template
 
 **Location:** `claude/CLAUDE.md`
 
@@ -95,6 +110,15 @@ A template for giving Claude persistent memory within a project. Copy it to your
 MixtapeTools/
 ├── README.md                 # You are here
 ├── workflow.md               # How I use Claude Code for research (START HERE)
+├── skills/                   # Human-readable guide to Claude Code skills
+│   ├── README.md            # What skills are, how to use them, how to install
+│   └── split-pdf/           # Documentation and examples for the split-pdf skill
+│       └── README.md        # Detailed guide with methodology and examples
+├── .claude/
+│   └── skills/
+│       └── split-pdf/        # Skill: download, split, and deep-read PDFs
+│           ├── SKILL.md     # Instructions Claude follows
+│           └── methodology.md # Why this method works (for humans)
 ├── claude/                   # Templates for working with Claude
 │   ├── CLAUDE.md            # Project context template (copy to your projects)
 │   └── README.md
