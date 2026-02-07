@@ -96,7 +96,45 @@ A Claude Code **skill** — an invocable `/split-pdf` command that automates the
 
 **Usage:** Type `/split-pdf path/to/paper.pdf` or `/split-pdf "search query for paper"`
 
-### 4. CLAUDE.md Template
+### 4. Compile Deck (Beamer Presentations with the Rhetoric of Decks)
+
+**Location:** `.claude/commands/compiledeck.md`
+
+A Claude Code **command** — invoke with `/compiledeck` — that embeds the full Rhetoric of Decks philosophy so you don't have to explain it each time.
+
+**The skill asks two questions:**
+
+1. **Who is the audience?**
+   - **External** (seminar, conference, teaching) — sparse, performative, one idea per slide
+   - **Working** (coauthors, yourself) — can be more detailed, documents reasoning
+
+2. **What's the tone?**
+   - **Professional/Academic** — your consistent "house style" for outward-facing work
+   - **Colorful/Expressive** — unique, creative design each time
+
+**Why separate these?** External presentations need polish and restraint. Working decks can be messier—they're thinking tools. Some people want the same style for both; others want creative freedom internally while maintaining a professional brand externally.
+
+**House style:** Define your preferred "Professional/Academic" palette in your CLAUDE.md. The skill checks for it. If none is defined, it uses a sensible default.
+
+**What's embedded:**
+- The Three Laws (Beauty is Function, Cognitive Load is Enemy, Slide Serves Spoken Word)
+- Titles as assertions, not labels
+- MB/MC equivalence across slides
+- The compile loop (compile → fix errors → fix warnings → visual check → repeat)
+- TikZ coordinate checking and figure label verification
+
+**Usage:** Type `/compiledeck` when creating or editing a Beamer deck.
+
+### 5. Additional Commands
+
+**Location:** `.claude/commands/`
+
+| Command | Description |
+|---------|-------------|
+| `/compiletex [file.tex]` | Compile any LaTeX file and report errors/warnings. Aims for zero warnings. |
+| `/newproject [name]` | Scaffold a new research project with standard folder structure and CLAUDE.md |
+
+### 6. CLAUDE.md Template
 
 **Location:** `claude/CLAUDE.md`
 
@@ -115,6 +153,10 @@ MixtapeTools/
 │   └── split-pdf/           # Documentation and examples for the split-pdf skill
 │       └── README.md        # Detailed guide with methodology and examples
 ├── .claude/
+│   ├── commands/             # Slash commands (invoke with /command-name)
+│   │   ├── compiledeck.md   # /compiledeck — Beamer presentations with Rhetoric of Decks
+│   │   ├── compiletex.md    # /compiletex — Compile LaTeX, report errors/warnings
+│   │   └── newproject.md    # /newproject — Scaffold new research project
 │   └── skills/
 │       └── split-pdf/        # Skill: download, split, and deep-read PDFs
 │           ├── SKILL.md     # Instructions Claude follows
