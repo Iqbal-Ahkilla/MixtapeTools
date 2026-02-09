@@ -205,6 +205,8 @@ The point is: make something beautiful that shows care.
 
 ## The Compile Loop
 
+**ZERO TOLERANCE FOR WARNINGS.** We aim for perfection. Every compile must be completely clean — no overfull hbox (not even 0.5pt), no underfull vbox, no font warnings. "Close enough" is not acceptable.
+
 After any edit to a .tex file:
 
 ### Step 1: Compile
@@ -216,16 +218,18 @@ pdflatex -interaction=nonstopmode [file].tex
 ### Step 2: Check for Errors
 Look for lines starting with `!` — these are fatal errors.
 
-### Step 3: Check for Warnings
+### Step 3: Check for Warnings — FIX ALL OF THEM
 
-**Overfull hbox**: Text or figures too wide
-- Fix: Rephrase text, adjust `\textwidth`, scale figures
+**Overfull hbox**: Text or figures too wide — even 0.5pt must be fixed
+- Fix: Rephrase text, shorten words, add `@{}` to table columns, scale figures
 
 **Underfull hbox**: Awkward spacing
 - Fix: Rephrase or adjust paragraph breaks
 
 **Overfull vbox**: Too much content for slide
-- Fix: Split slide or reduce content
+- Fix: Split slide or reduce content, tighten `\vspace`
+
+**Do not proceed until all warnings are resolved.**
 
 ### Step 4: Check TikZ Coordinates
 
@@ -233,6 +237,8 @@ TikZ positioning errors don't trigger compile warnings but produce visual errors
 - Labels at wrong positions
 - Nodes overlapping
 - Arrows pointing incorrectly
+
+**Verify intentionality**: For each coordinate (x, y), ask: "Is this where I want it, or did I want (x + τ, y + ε)?" This may require calculation or careful visual inspection.
 
 **Manually verify**: Open PDF, check each TikZ figure visually.
 
@@ -247,7 +253,7 @@ External figures (ggplot, matplotlib) can have label positioning problems:
 
 ### Step 6: Recompile Until Clean
 
-Goal: Zero warnings, zero visual errors.
+Goal: **Zero warnings, zero visual errors.** Do not consider the work complete until this is achieved.
 
 ---
 
